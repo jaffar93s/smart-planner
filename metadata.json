@@ -1,0 +1,10 @@
+{
+  "name": "مخططي الذكي - Smart Planner",
+  "description": "تطبيق متكامل للتخطيط الشخصي يعتمد على تحليل SWOT، مصفوفة أيزنهاور، والأهداف الذكية مع مساعد ذكاء اصطناعي لتحسين جودة حياتك.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

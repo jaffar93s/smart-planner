@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account and preferences profile stored in Firestore",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique Firebase Authentication UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoURL": { "type": "string", "description": "User profile avatar URL" },
+        "locale": { "type": "string", "enum": ["ar", "en"], "description": "Preferred interface language" },
+        "themePrimary": { "type": "string", "description": "Active primary color theme" },
+        "themeMode": { "type": "string", "enum": ["light", "dark"], "description": "Dark or light UI mode" },
+        "createdAt": { "type": "string", "description": "ISO timestamp when account was registered" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp when account was last updated" }
+      },
+      "required": ["uid", "email"]
+    },
+    "PlannerState": {
+      "title": "PlannerState",
+      "description": "Complete personal planning and productivity state synced across devices",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "swot": { "type": "object", "description": "Strengths, Weaknesses, Opportunities, and Threats" },
+        "goals": { "type": "array", "description": "List of user SMART goals" },
+        "tasks": { "type": "array", "description": "List of Eisenhower matrix prioritized tasks" },
+        "habits": { "type": "array", "description": "Habit trackers with streaks and completions" },
+        "dailyPlans": { "type": "object", "description": "Hourly time slot plans mapped by date" },
+        "journals": { "type": "array", "description": "Daily thoughts and work-life balance entries" },
+        "reminders": { "type": "array", "description": "Scheduled notifications and reminders" },
+        "gamification": { "type": "object", "description": "User XP, badges, and level progress" },
+        "lastSyncedAt": { "type": "string", "description": "ISO timestamp of last successful cloud sync" },
+        "clientVersion": { "type": "string", "description": "App version string" }
+      },
+      "required": ["userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile document isolated strictly to the authenticated owner"
+    },
+    "/users/{userId}/plannerData/{documentId}": {
+      "schema": { "$ref": "#/entities/PlannerState" },
+      "description": "Cross-device synced productivity state including goals, habits, and tasks"
+    }
+  }
+}

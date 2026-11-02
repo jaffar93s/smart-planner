@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مخططي الذكي - Smart Planner</title>
+    <meta name="description" content="تطبيق متكامل للتخطيط الشخصي يعتمد على تحليل SWOT، مصفوفة أيزنهاور، والأهداف الذكية مع مساعد ذكاء اصطناعي لتحسين جودة حياتك." />
+    <meta property="og:title" content="مخططي الذكي - Smart Planner" />
+    <meta property="og:description" content="تطبيق متكامل للتخطيط الشخصي يعتمد على تحليل SWOT، مصفوفة أيزنهاور، والأهداف الذكية مع مساعد ذكاء اصطناعي لتحسين جودة حياتك." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: 'var(--brand-50)',
+                100: 'var(--brand-100)',
+                200: 'var(--brand-200)',
+                300: 'var(--brand-300)',
+                400: 'var(--brand-400)',
+                500: 'var(--brand-500)',
+                600: 'var(--brand-600)',
+                700: 'var(--brand-700)',
+                800: 'var(--brand-800)',
+                900: 'var(--brand-900)',
+              }
+            },
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+            },
+            animation: {
+              'spin-slow': 'spin 8s linear infinite',
+              'shimmer': 'shimmer 2.5s infinite linear',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(200%)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Default Indigo Theme */
+        --brand-50: #eef2ff;
+        --brand-100: #e0e7ff;
+        --brand-200: #c7d2fe;
+        --brand-300: #a5b4fc;
+        --brand-400: #818cf8;
+        --brand-500: #6366f1;
+        --brand-600: #4f46e5;
+        --brand-700: #4338ca;
+        --brand-800: #3730a3;
+        --brand-900: #312e81;
+      }
+      :root.dark {
+        color-scheme: dark;
+      }
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      :root.dark body {
+        background-color: #0b0f19;
+        color: #f1f5f9;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .dark .glass-effect {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: var(--brand-200);
+        border-radius: 10px;
+      }
+      @keyframes swotGhostPulse {
+        0%, 100% {
+          opacity: 0.4;
+          transform: scale(0.98);
+        }
+        50% {
+          opacity: 0.22;
+          transform: scale(0.965);
+        }
+      }
+      .swot-item-card {
+        transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+      }
+      .swot-item-card.is-dragging {
+        animation: swotGhostPulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        opacity: 0.35;
+        border-style: dashed !important;
+        border-color: #94a3b8 !important;
+      }
+    </style>
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
